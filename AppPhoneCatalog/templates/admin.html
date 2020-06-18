@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block main_2 %}
+        <div class="card mb-3">
+        <div class="card-body">
+        <form action="../post_Inform/" method="post">
+            {% csrf_token %}
+            <h5>Add Inform:</h5>
+            <div class="mb-3">
+                <input class="form-control"
+                       placeholder="NameCompany"
+                       name="NameCompany"
+                       required/>
+            </div>
+            <div class="mb-3">
+                <input class="form-control"
+                       placeholder="Adress"
+                       name="Adress"
+                       required/>
+            </div>
+            <div class="mb-3">
+                <input class="form-control"
+                       placeholder="Phone"
+                       name="Phone"
+                       required/>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">
+                    Save
+                </button>
+            </div>
+        </form>
+        </div>
+        </div>
+        <div class="card mb-3">
+        <div class="card-body">
+        <h4 class="card-title">List Catalog</h4>
+        {% if Catalog %}
+            <table border="3px, double, black">
+                <tr>
+                    <th>Name</th>
+                    <th>RegDate</th>
+                    <th>Adress</th>
+                    <th>Phone</th>
+                </tr>
+                {% for CatalogOb in Catalog %}
+                <tr>
+                    <td>{{ CatalogOb.Name}}</td>
+                    <td>{{ CatalogOb.RegDate}}</td>
+                    <td>{{ CatalogOb.Adress}}</td>
+                    <td>{{ CatalogOb.Phone}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No information</p>
+        {% endif %}
+        </div>
+        </div>
+{% endblock %}

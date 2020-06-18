@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>AppPhoneCatalog</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1 class="mt-2">PhoneCatalog</h1>
+            {% if user.is_authenticated %}
+                <p class="text-right">
+                    Hello, {{ user.username }}!
+                    <a href="/AppPhoneCatalog/logout/">Log out</a> |
+                    <a href="/AppPhoneCatalog/passwordChange/">
+                        Change password
+                    </a> |
+                {% if user.is_staff %}
+                    <a href="/AppPhoneCatalog/admin/">Admin panel</a> |
+                    {% endif %}
+                {% if user.email == '' %}
+                    <a href="/AppPhoneCatalog/subscribe/"> Subscribe</a> |
+                    {% else %}
+                    <a href="/AppPhoneCatalog/unsubscribe/"> Unsubscribe </a>
+                    {% endif %}
+                </p>
+                 <hr class="mt-0 mb-4">
+                <div class="card">
+                     <div class="card-body">
+                    {% block main_2 %}
+                    {% endblock %}
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-right">
+                    <a href="/AppPhoneCatalog/logIn/">Log in</a> |
+                    <a href="/AppPhoneCatalog/register/">Register</a>
+                </p>
+            {% endif %}
+            <hr class="mt-0 mb-4">
+        <hr class="mt-0 mb-4">
+            <div class="card" style="border: hidden">
+                <div class="card-body">
+                    {% block main %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
