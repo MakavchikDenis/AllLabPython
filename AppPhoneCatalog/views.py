@@ -26,7 +26,7 @@ def index(request):
         request,
         "index.html",
         {
-            "Catalog": Catalog.objects.order_by('RegDate')[:10],
+            "Catalog": Catalog.objects.order_by('RegDate')[:23],
             "latest_messages": Message.objects.order_by('-pub_date')[:5]
 
         }
@@ -68,7 +68,7 @@ def admin(request):
         request,
         "admin.html",
         {
-            "Catalog": Catalog.objects.order_by('RegDate')[:10],
+            "Catalog": Catalog.objects.order_by('RegDate')[:23],
         }
     )
 
